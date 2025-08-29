@@ -145,7 +145,7 @@ const Header = ({ onSidebarToggle }) => {
       </div>
 
       {/* Mobile Navigation */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, height: 0 }}
         animate={{
           opacity: isOpen ? 1 : 0,
@@ -175,7 +175,7 @@ const Header = ({ onSidebarToggle }) => {
             </button>
           </nav>
         </div>
-      </motion.div>
+      </motion.div> */}
     </motion.header>
   );
 };
