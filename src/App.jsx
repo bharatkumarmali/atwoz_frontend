@@ -15,12 +15,12 @@ import AboutPage from "./pages/About/AboutPage";
 import ContactPage from "./pages/Contact/ContactPage";
 import PortfolioPage from "./pages/Portfolio/PortfolioPage";
 import ServicesPage from "./pages/Services/ServiceMain/ServicesPage";
-import ServiceDetailPage from "./pages/Services/ServiceDetailPage";
 import AadharPage from "./pages/Services/Aadhar/AadharPage";
 import CspPage from "./pages/Services/Csp/CspPage";
 import PanCenterPage from "./pages/Services/PanCenter/PanCenterPage";
 import EmitraPage from "./pages/Services/Emitra/EmitraPage";
 import UtilityServicePage from "./pages/Services/UtilityService/UtilityServicePage";
+import AepsPage from "./pages/Services/Aeps/AepsPage";
 
 // Separate component that uses useLocation inside Router context
 const AppContent = () => {
@@ -75,11 +75,11 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
           <Route path="/services/aadhar" element={<AadharPage />} />
+          <Route path="/services/emitra" element={<EmitraPage />} />
+          <Route path="/services/aeps" element={<AepsPage />} />
           <Route path="/services/csp" element={<CspPage />} />
           <Route path="/services/pan" element={<PanCenterPage />} />
-          <Route path="/services/emitra" element={<EmitraPage />} />
           <Route path="/services/utility" element={<UtilityServicePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />

@@ -21,23 +21,24 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
+      { name: "Home", href: "/" },
+      { name: "Services", href: "/services" },
       { name: "About Us", href: "/about" },
-      { name: "Our Team", href: "/about#team" },
-      { name: "Careers", href: "/careers" },
       { name: "Contact", href: "/contact" },
     ],
     services: [
       { name: "Aadhaar Services", href: "/services/aadhar" },
       { name: "E-Mitra Services", href: "/services/emitra" },
+      { name: "AEPS Services", href: "/services/aeps" },
       { name: "CSP Services", href: "/services/csp" },
       { name: "PAN Services", href: "/services/pan" },
       { name: "Utility Services", href: "/services/utility" },
     ],
     support: [
-      { name: "Help Center", href: "/help" },
-      { name: "Documentation", href: "/docs" },
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" },
+      { name: "Help Center", href: "/" },
+      { name: "Documentation", href: "/" },
+      { name: "Privacy Policy", href: "/" },
+      { name: "Terms of Service", href: "/" },
     ],
   };
 
@@ -72,11 +73,30 @@ const Footer = () => {
               transition={{ duration: 0.8 }}
               className="lg:col-span-1"
             >
-              <Link to="/" className="flex items-center space-x-2 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">A</span>
-                </div>
-                <span className="text-2xl font-bold">Atwoz</span>
+              <Link to="/">
+                <motion.div
+                  // whileHover={{ scale: 1.05 }}
+                  className="flex items-center space-x-2 mb-4"
+                >
+                  {/* <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">A</span>
+                </div> */}
+                  <div className="w-10 h-10 bg-gradient-to-r from-white-600 to-white-600 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10">
+                      <img
+                        src="/logo.png"
+                        alt="Atwoz"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <span
+                    className={`text-2xl font-bold transition-colors duration-300 text-white`}
+                  >
+                    Atwoz
+                  </span>
+                </motion.div>
               </Link>
 
               <p className="text-gray-400 mb-6 leading-relaxed">
@@ -86,7 +106,7 @@ const Footer = () => {
               </p>
 
               {/* Contact Info */}
-              <div className="space-y-3">
+              <div className="space-y-6">
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Mail size={16} />
                   <a href={`mailto:${import.meta.env.VITE_EMAIL_ID}`}>
@@ -113,13 +133,13 @@ const Footer = () => {
               </div>
             </motion.div>
 
-            {/* Company Links */}
+            {/* Quick Links */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <h3 className="text-lg font-semibold mb-6">Company</h3>
+              <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
               <ul className="space-y-3">
                 {footerLinks.company.map((link, index) => (
                   <motion.li

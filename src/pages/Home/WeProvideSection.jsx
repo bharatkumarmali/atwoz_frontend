@@ -39,6 +39,11 @@ const WeProvideSection = () => {
        .group-5:hover .border-blue-5 { border-color: #3b82f6; }
        .group-5:hover .bg-blue-5 { background-color: #3b82f6; }
        .group-5:hover .text-white-5 { color: #ffffff; }
+       
+       .group-6:hover .scale-110-6 { transform: scale(1.1); }
+       .group-6:hover .border-blue-6 { border-color: #3b82f6; }
+       .group-6:hover .bg-blue-6 { background-color: #3b82f6; }
+       .group-6:hover .text-white-6 { color: #ffffff; }
     `;
     document.head.appendChild(style);
 
@@ -70,6 +75,16 @@ const WeProvideSection = () => {
     },
     {
       id: 3,
+      title: "AEPS",
+      description:
+        "Aadhaar Enabled Payment System (AEPS) allows you to provide banking services like cash withdrawal, deposits, balance inquiry, and fund transfers using Aadhaar authentication.",
+      bannerImage: "/aeps-banner.jpg",
+      logo: "/aeps.png",
+      endpoint: "/services/aeps",
+      buttonColor: "bg-gray-100",
+    },
+    {
+      id: 4,
       title: "CSP",
       description:
         "become Bank Mitra for State Bank of India, Bank of Baroda, Bank of India and Punjab National Bank.",
@@ -79,7 +94,7 @@ const WeProvideSection = () => {
       buttonColor: "bg-gray-100",
     },
     {
-      id: 4,
+      id: 5,
       title: "PAN CENTER",
       description:
         "UTI Infrastructure Technology And Services Limited (UTIITSL) is a Government Company under section 2(45) of the Companies Act 2013,",
@@ -89,7 +104,7 @@ const WeProvideSection = () => {
       buttonColor: "bg-gray-100",
     },
     {
-      id: 5,
+      id: 6,
       title: "Utility Service",
       description:
         "Bill Payment & Recharge. Recharge your prepaid mobile, DTH account, Pay your electricity, postpaid, landline, broadband, gas, water bills.",
@@ -138,10 +153,10 @@ const WeProvideSection = () => {
             }}
             loop={false}
             autoplay={{
-              delay: 3000,
+              delay: 4000,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
-            // autoplay={false}
             breakpoints={{
               640: {
                 slidesPerView: 2,

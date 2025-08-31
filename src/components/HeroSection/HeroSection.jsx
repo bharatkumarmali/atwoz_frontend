@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
@@ -11,53 +11,98 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 const HeroSection = () => {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
   const heroSlides = [
     {
       id: 1,
-      title: "Innovative Digital Solutions",
-      subtitle: "Transform your business with cutting-edge technology",
+      title: "Aadhaar Services",
+      subtitle: "Complete Aadhaar Solutions",
       description:
-        "We help businesses grow and succeed in the digital age with our comprehensive web development, mobile apps, and digital marketing services.",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
-      cta: "Get Started",
+        "Get your Aadhaar enrollment, biometric updates, address corrections, and other Aadhaar-related services done quickly and efficiently. We provide comprehensive Aadhaar services with expert guidance.",
+      image: "/aadhar-banner.jpg",
+      cta: "Get Aadhaar Services",
       stats: [
-        { number: "500+", label: "Projects Completed" },
-        { number: "50+", label: "Happy Clients" },
-        { number: "5+", label: "Years Experience" },
+        { number: "1000+", label: "Aadhaar Enrollments" },
+        { number: "24/7", label: "Support Available" },
+        { number: "Fast", label: "Processing Time" },
       ],
     },
     {
       id: 2,
-      title: "Creative Web Design",
-      subtitle: "Beautiful websites that convert",
+      title: "E-mitra Services",
+      subtitle: "Government Services Made Easy",
       description:
-        "Our team of expert designers and developers create stunning, responsive websites that not only look great but also drive results for your business.",
-      image:
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
-      cta: "View Portfolio",
+        "Access all government services through our E-mitra center. From certificates to licenses, we help you navigate government processes with ease and efficiency.",
+      image: "/e-mitra-banner.jpg",
+      cta: "View E-mitra Services",
       stats: [
-        { number: "100%", label: "Client Satisfaction" },
-        { number: "24/7", label: "Support Available" },
-        { number: "Fast", label: "Delivery Time" },
+        { number: "50+", label: "Government Services" },
+        { number: "Expert", label: "Guidance" },
+        { number: "Quick", label: "Processing" },
       ],
     },
     {
       id: 3,
-      title: "Mobile App Development",
-      subtitle: "Native & Cross-platform Solutions",
+      title: "AEPS Banking Services",
+      subtitle: "Aadhaar Enabled Payment System",
       description:
-        "From concept to launch, we build powerful mobile applications that engage users and drive business growth across all platforms.",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-      cta: "Learn More",
+        "Provide banking services like cash withdrawal, deposits, balance inquiry, and fund transfers using Aadhaar authentication. Serve your community with secure biometric banking solutions.",
+      image: "/aeps-banner.jpg",
+      cta: "Get AEPS Services",
       stats: [
-        { number: "100+", label: "Apps Developed" },
-        { number: "4.8★", label: "App Store Rating" },
-        { number: "1M+", label: "Downloads" },
+        { number: "300+", label: "Daily Transactions" },
+        { number: "Secure", label: "Biometric Auth" },
+        { number: "Instant", label: "Banking Services" },
+      ],
+    },
+    {
+      id: 4,
+      title: "PAN Center Services",
+      subtitle: "PAN Card Solutions",
+      description:
+        "Apply for new PAN cards, make corrections, and get duplicate PAN cards through our authorized PAN center. Fast, reliable, and secure PAN card services.",
+      image: "/pen-center-banner.jpg",
+      cta: "Get PAN Services",
+      stats: [
+        { number: "200+", label: "PAN Applications" },
+        { number: "Authorized", label: "Center" },
+        { number: "Quick", label: "Processing" },
+      ],
+    },
+    {
+      id: 5,
+      title: "CSP Banking Services",
+      subtitle: "Banking at Your Doorstep",
+      description:
+        "Access banking services like cash deposits, withdrawals, balance inquiries, mini statements, and more through our Customer Service Point (CSP). Bring banking convenience to your community.",
+      image: "/CSP-banner.png",
+      cta: "Explore Banking Services",
+      stats: [
+        { number: "500+", label: "Daily Transactions" },
+        { number: "100%", label: "Secure Banking" },
+        { number: "Instant", label: "Service Delivery" },
+      ],
+    },
+    {
+      id: 6,
+      title: "Utility Bill Payments",
+      subtitle: "Pay All Your Bills",
+      description:
+        "Pay electricity, water, gas, mobile, DTH, and other utility bills through our platform. Convenient, secure, and instant bill payment services for all your needs.",
+      image: "/utilityservice-banner.jpg",
+      cta: "Pay Bills Now",
+      stats: [
+        { number: "1000+", label: "Daily Payments" },
+        { number: "Instant", label: "Confirmation" },
+        { number: "All", label: "Utilities Covered" },
       ],
     },
   ];
+
+  const handleSlideChange = (swiper) => {
+    setActiveSlideIndex(swiper.realIndex);
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center">
@@ -177,6 +222,7 @@ const HeroSection = () => {
           }}
           loop={true}
           className="h-screen"
+          onSlideChange={handleSlideChange}
         >
           {heroSlides.map((slide, index) => (
             <SwiperSlide key={slide.id}>
@@ -209,12 +255,50 @@ const HeroSection = () => {
                       </motion.div> */}
 
                       <motion.h1
+                        key={`${slide.id}-${activeSlideIndex}`} // Key changes when slide becomes active
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="text-5xl lg:text-7xl font-bold mb-6 leading-tight"
+                        style={{
+                          wordBreak: "keep-all",
+                          whiteSpace: "normal",
+                          overflowWrap: "break-word",
+                        }}
                       >
-                        {slide.title}
+                        {slide.title.split(" ").map((word, wordIndex) => (
+                          <motion.span
+                            key={`${slide.id}-${activeSlideIndex}-word-${wordIndex}`}
+                            className="inline-block mr-2"
+                            style={{ wordBreak: "keep-all" }}
+                          >
+                            {word.split("").map((char, charIndex) => (
+                              <motion.span
+                                key={`${slide.id}-${activeSlideIndex}-${wordIndex}-${charIndex}`} // Unique key that changes with active slide
+                                initial={{ opacity: 0, y: 50, scale: 0.5 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                transition={{
+                                  duration: 0.6,
+                                  delay:
+                                    0.8 +
+                                    (wordIndex * word.length + charIndex) *
+                                      0.08,
+                                  ease: "easeOut",
+                                }}
+                                className="inline-block"
+                                style={{ wordBreak: "keep-all" }}
+                                whileHover={{
+                                  scale: 1.2,
+                                  color: "#60A5FA",
+                                  textShadow:
+                                    "0 0 20px rgba(96, 165, 250, 0.8)",
+                                }}
+                              >
+                                {char}
+                              </motion.span>
+                            ))}
+                          </motion.span>
+                        ))}
                       </motion.h1>
 
                       <motion.p

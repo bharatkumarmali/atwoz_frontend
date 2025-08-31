@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import {
   ArrowRight,
   CheckCircle,
@@ -20,6 +22,11 @@ import {
   TrendingUp,
   Award,
 } from "lucide-react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // Custom hook for counter animation
 const useCounter = (end, start = 0, duration = 2000) => {
@@ -86,10 +93,10 @@ const ServicesPage = () => {
       bannerImage: "/aadhar-banner.jpg",
       logo: "/aadhar.png",
       icon: Shield,
-      color: "from-green-500 to-green-600",
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600",
-      borderColor: "border-green-200",
+      color: "from-emerald-500 to-emerald-600",
+      bgColor: "bg-emerald-50",
+      iconColor: "text-emerald-600",
+      borderColor: "border-emerald-200",
       price: "Government Rates",
       duration: "Same Day Service",
       benefits: [
@@ -119,10 +126,10 @@ const ServicesPage = () => {
       bannerImage: "/e-mitra-banner.jpg",
       logo: "/emitra.png",
       icon: TrendingUp,
-      color: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-50",
-      iconColor: "text-orange-600",
-      borderColor: "border-orange-200",
+      color: "from-amber-500 to-amber-600",
+      bgColor: "bg-amber-50",
+      iconColor: "text-amber-600",
+      borderColor: "border-amber-200",
       price: "Government Rates",
       duration: "Same Day to 7 Days",
       benefits: [
@@ -135,6 +142,39 @@ const ServicesPage = () => {
     },
     {
       id: 3,
+      title: "AEPS",
+      subtitle: "Aadhaar Enabled Payment System",
+      description:
+        "Aadhaar Enabled Payment System (AEPS) allows you to provide banking services like cash withdrawal, deposits, balance inquiry, and fund transfers using Aadhaar authentication.",
+      longDescription:
+        "AEPS is a bank-led model that allows online interoperable financial transactions at PoS through Business Correspondent using Aadhaar authentication. Provide essential banking services to your community using biometric authentication.",
+      features: [
+        "Cash Withdrawal",
+        "Cash Deposit",
+        "Balance Inquiry",
+        "Mini Statement",
+        "Aadhaar to Aadhaar Transfer",
+        "Bank Account Linking",
+      ],
+      bannerImage: "/aeps-banner.jpg",
+      logo: "/aeps.png",
+      icon: CreditCard,
+      color: "from-sky-500 to-sky-600",
+      bgColor: "bg-sky-50",
+      iconColor: "text-sky-600",
+      borderColor: "border-sky-200",
+      price: "Commission Based",
+      duration: "Instant Transactions",
+      benefits: [
+        "Secure Transactions",
+        "Instant Processing",
+        "Wide Coverage",
+        "Low Investment",
+      ],
+      endpoint: "/services/aeps",
+    },
+    {
+      id: 4,
       title: "CSP",
       subtitle: "Bank Mitra Services",
       description:
@@ -152,10 +192,10 @@ const ServicesPage = () => {
       bannerImage: "/CSP-banner.png",
       logo: "/csp.png",
       icon: Users,
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      iconColor: "text-blue-600",
-      borderColor: "border-blue-200",
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-50",
+      iconColor: "text-indigo-600",
+      borderColor: "border-indigo-200",
       price: "Commission Based",
       duration: "Instant Setup",
       benefits: [
@@ -167,7 +207,7 @@ const ServicesPage = () => {
       endpoint: "/services/csp",
     },
     {
-      id: 4,
+      id: 5,
       title: "PAN CENTER",
       subtitle: "UTIITSL Services",
       description:
@@ -185,10 +225,10 @@ const ServicesPage = () => {
       bannerImage: "/pen-center-banner.jpg",
       logo: "/uti.png",
       icon: FileText,
-      color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50",
-      iconColor: "text-purple-600",
-      borderColor: "border-purple-200",
+      color: "from-violet-500 to-violet-600",
+      bgColor: "bg-violet-50",
+      iconColor: "text-violet-600",
+      borderColor: "border-violet-200",
       price: "Government Rates",
       duration: "7-15 Days",
       benefits: [
@@ -200,7 +240,7 @@ const ServicesPage = () => {
       endpoint: "/services/pan",
     },
     {
-      id: 5,
+      id: 6,
       title: "Utility Service",
       subtitle: "Bill Payment & Recharge",
       description:
@@ -218,10 +258,10 @@ const ServicesPage = () => {
       bannerImage: "/utilityservice-banner.jpg",
       logo: "/utility.png",
       icon: Zap,
-      color: "from-red-500 to-red-600",
-      bgColor: "bg-red-50",
-      iconColor: "text-red-600",
-      borderColor: "border-red-200",
+      color: "from-rose-500 to-rose-600",
+      bgColor: "bg-rose-50",
+      iconColor: "text-rose-600",
+      borderColor: "border-rose-200",
       price: "No Extra Charges",
       duration: "Instant",
       benefits: [
@@ -258,6 +298,133 @@ const ServicesPage = () => {
       rating: 5,
       comment:
         "The PAN Center partnership with UTIITSL has been very profitable. The process is simple and customer satisfaction is high.",
+    },
+  ];
+
+  const serviceManagers = [
+    {
+      id: 1,
+      name: "Niraj Mali",
+      position: "Aadhaar Centre Manager",
+      service: "Aadhaar Centre",
+      rating: 5,
+      experience: "8+ Years",
+      specializations: [
+        "UIDAI Operations",
+        "Biometric Systems",
+        "Customer Service",
+      ],
+      contact: `+91 ${import.meta.env.VITE_MOBILE_NO_niraj}`,
+      email: `${import.meta.env.VITE_EMAIL_ID_NIRAJ}`,
+      location: "Delhi, India",
+      achievements: [
+        "1000+ Enrollments",
+        "99% Success Rate",
+        "Best Performance Award",
+      ],
+      avatar: "/aadhar.png",
+    },
+    {
+      id: 2,
+      name: "Kishan Mali",
+      position: "E-Mitra Coordinator",
+      service: "E-Mitra Services",
+      rating: 5,
+      experience: "6+ Years",
+      specializations: [
+        "Government Services",
+        "Digital Literacy",
+        "Process Optimization",
+      ],
+      contact: `+91 ${import.meta.env.VITE_MOBILE_NO_1}`,
+      email: `${import.meta.env.VITE_EMAIL_ID}`,
+      location: "Rajasthan, India",
+      achievements: ["50+ Services", "24/7 Support", "Customer Excellence"],
+      avatar: "/emitra.png",
+    },
+    {
+      id: 3,
+      name: "Kishan Mali",
+      position: "AEPS Banking Specialist",
+      service: "AEPS Services",
+      rating: 5,
+      experience: "7+ Years",
+      specializations: [
+        "Banking Operations",
+        "AEPS Systems",
+        "Financial Services",
+      ],
+      contact: `+91 ${import.meta.env.VITE_MOBILE_NO_1}`,
+      email: `${import.meta.env.VITE_EMAIL_ID}`,
+      location: "Mumbai, India",
+      achievements: [
+        "300+ Daily Transactions",
+        "Zero Downtime",
+        "Security Excellence",
+      ],
+      avatar: "/aeps.png",
+    },
+    {
+      id: 4,
+      name: "Kishan Mali",
+      position: "CSP Banking Manager",
+      service: "CSP Banking",
+      rating: 5,
+      experience: "10+ Years",
+      specializations: [
+        "Multi-Bank Operations",
+        "Financial Inclusion",
+        "Rural Banking",
+      ],
+      contact: `+91 ${import.meta.env.VITE_MOBILE_NO_1}`,
+      email: `${import.meta.env.VITE_EMAIL_ID}`,
+      location: "Punjab, India",
+      achievements: [
+        "500+ Daily Transactions",
+        "Multi-Bank Partner",
+        "Rural Outreach",
+      ],
+      avatar: "/csp.png",
+    },
+    {
+      id: 5,
+      name: "Kishan Mali",
+      position: "PAN Center Supervisor",
+      service: "PAN Center",
+      rating: 5,
+      experience: "9+ Years",
+      specializations: [
+        "UTIITSL Operations",
+        "Document Processing",
+        "Compliance",
+      ],
+      contact: `+91 ${import.meta.env.VITE_MOBILE_NO_1}`,
+      email: `${import.meta.env.VITE_EMAIL_ID}`,
+      location: "Hyderabad, India",
+      achievements: ["200+ Applications", "Fast Processing", "100% Accuracy"],
+      avatar: "/uti.png",
+    },
+    {
+      id: 6,
+      name: "Kishan Mali",
+      position: "Utility Services Head",
+      service: "Utility Services",
+      rating: 5,
+      experience: "5+ Years",
+      specializations: [
+        "Bill Payments",
+        "Digital Payments",
+        "Customer Support",
+      ],
+      contact: `+91 ${import.meta.env.VITE_MOBILE_NO_1}`,
+      email: `${import.meta.env.VITE_EMAIL_ID}`,
+      location: "Bangalore, India",
+      achievements: [
+        "1000+ Daily Payments",
+        "All Utilities Covered",
+        "Instant Processing",
+      ],
+      avatar: "/utility.png",
     },
   ];
 
@@ -546,7 +713,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-white">
+      {/* <section className="py-16 sm:py-20 md:py-24 bg-white">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -572,7 +739,6 @@ const ServicesPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-lg transition-all duration-300"
               >
-                {/* Rating */}
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
@@ -583,12 +749,10 @@ const ServicesPage = () => {
                   ))}
                 </div>
 
-                {/* Comment */}
                 <p className="text-gray-700 mb-6 leading-relaxed text-lg">
                   "{testimonial.comment}"
                 </p>
 
-                {/* Author */}
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                     <span className="text-blue-600 font-semibold text-lg">
@@ -604,6 +768,174 @@ const ServicesPage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* Service Management Details Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Service Management Team
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Meet our expert service managers who ensure smooth operations and
+              excellent customer service for each specialized service.
+            </p>
+          </motion.div>
+
+          {/* Navigation Arrows */}
+          <div className="flex gap-5 w-fit mx-auto mb-8">
+            <button className="group service-manager-arrow-left arrow bg-transparent active:scale-90 cursor-pointer hover:border-blue-500 duration-300 text-gray-300 hover:text-blue-500 p-2.5 rounded-full border">
+              <ArrowRight className="text-[30px] group-hover:border-blue-500 rotate-180" />
+            </button>
+            <button className="group service-manager-arrow-right arrow bg-transparent active:scale-90 cursor-pointer hover:border-blue-500 duration-300 text-gray-300 hover:text-blue-500 p-2.5 rounded-full border">
+              <ArrowRight className="text-[30px] group-hover:border-blue-500" />
+            </button>
+          </div>
+
+          {/* Service Managers Slider */}
+          <div className="relative min-h-[600px]">
+            <Swiper
+              className="select-none w-full h-full"
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              navigation={{
+                nextEl: ".service-manager-arrow-right",
+                prevEl: ".service-manager-arrow-left",
+              }}
+              loop={false}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+              }}
+            >
+              {serviceManagers.map((manager, index) => (
+                <SwiperSlide key={manager.id}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className="bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-xl transition-all duration-300 group h-full"
+                  >
+                    {/* Header with Avatar and Rating */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-gray-100 group-hover:border-blue-200 transition-colors">
+                          <img
+                            src={manager.avatar}
+                            alt={manager.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900">
+                            {manager.name}
+                          </h3>
+                          <p className="text-blue-600 font-semibold">
+                            {manager.position}
+                          </p>
+                          <p className="text-sm text-gray-500">
+                            {manager.service}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        {[...Array(manager.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            size={16}
+                            className="text-yellow-400 fill-current"
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Experience and Location */}
+                    <div className="flex items-center justify-between mb-4 text-sm">
+                      <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">
+                        {manager.experience}
+                      </span>
+                      <span className="text-gray-600 flex items-center">
+                        <MapPin className="w-4 h-4 mr-1" />
+                        {manager.location}
+                      </span>
+                    </div>
+
+                    {/* Specializations */}
+                    <div className="mb-4">
+                      <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                        Specializations:
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {manager.specializations.map((spec, idx) => (
+                          <span
+                            key={idx}
+                            className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs"
+                          >
+                            {spec}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Achievements */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                        Key Achievements:
+                      </h4>
+                      <div className="space-y-1">
+                        {manager.achievements.map((achievement, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center space-x-2"
+                          >
+                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                            <span className="text-sm text-gray-600">
+                              {achievement}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Contact Information */}
+                    <div className="border-t border-gray-100 pt-4">
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center space-x-2">
+                          <Phone className="w-4 h-4 text-blue-500" />
+                          <span className="text-gray-700">
+                            {manager.contact}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Mail className="w-4 h-4 text-blue-500" />
+                          <span className="text-gray-700">{manager.email}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </section>
@@ -654,15 +986,25 @@ const ServicesPage = () => {
               <div className="space-y-3">
                 <div className="flex items-center justify-center md:justify-start space-x-3">
                   <Phone className="w-5 h-5 text-blue-400" />
-                  <span>+91 98765 43210</span>
+                  <a href={`tel:+91${import.meta.env.VITE_MOBILE_NO_1}`}>
+                    <span>+91 {import.meta.env.VITE_MOBILE_NO_1},</span>
+                  </a>
                 </div>
                 <div className="flex items-center justify-center md:justify-start space-x-3">
                   <Mail className="w-5 h-5 text-blue-400" />
-                  <span>info@atwoz.com</span>
+                  <a href={`mailto:${import.meta.env.VITE_EMAIL_ID}`}>
+                    <span>{import.meta.env.VITE_EMAIL_ID}</span>
+                  </a>
                 </div>
                 <div className="flex items-center justify-center md:justify-start space-x-3">
                   <MapPin className="w-5 h-5 text-blue-400" />
-                  <span>Rajasthan, India</span>
+                  <span>
+                    ATWOZ IT SOLUTIONS PVT LTD,
+                    <br />
+                    Baba Ramdev Hotel Ke Samne
+                    <br />
+                    Sirohi Rajsthan - 307001
+                  </span>
                 </div>
               </div>
             </div>
