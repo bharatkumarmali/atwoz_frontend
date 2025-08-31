@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     { name: "Home", href: "/", icon: Home },
     { name: "Services", href: "/services", icon: Code },
     { name: "About", href: "/about", icon: Users },
-    { name: "Portfolio", href: "/portfolio", icon: Briefcase },
+    // { name: "Portfolio", href: "/portfolio", icon: Briefcase },
     { name: "Contact", href: "/contact", icon: Phone },
   ];
 
