@@ -33,7 +33,7 @@ const BottomNav = ({ onSidebarToggle }) => {
 
           {/* 2. Cart */}
           <Link
-            to="/cart"
+            to="/"
             className="flex flex-col items-center space-y-1 p-2 rounded-lg text-gray-600 hover:text-green-600 hover:bg-green-50 transition-all duration-200 relative"
           >
             <ShoppingCart size={28} />
@@ -58,7 +58,7 @@ const BottomNav = ({ onSidebarToggle }) => {
 
           {/* 4. Favorites */}
           <Link
-            to="/favorites"
+            to="/"
             className="flex flex-col items-center space-y-1 p-2 rounded-lg text-gray-600 hover:text-red-600 hover:bg-red-50 transition-all duration-200 relative"
           >
             <Heart size={28} />
@@ -70,7 +70,7 @@ const BottomNav = ({ onSidebarToggle }) => {
 
           {/* 5. User Profile */}
           <Link
-            to="/profile"
+            to="/"
             className="flex flex-col items-center space-y-1 p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
           >
             <User size={28} />

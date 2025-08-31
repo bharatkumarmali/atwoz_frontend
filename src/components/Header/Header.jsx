@@ -25,9 +25,9 @@ const Header = ({ onSidebarToggle }) => {
   ];
 
   const userActions = [
-    { name: "Profile", href: "/profile", icon: User },
-    { name: "Favorites", href: "/favorites", icon: Heart, badge: 4 },
-    { name: "Cart", href: "/cart", icon: ShoppingCart, badge: 2 },
+    { name: "Profile", href: "/", icon: User },
+    { name: "Favorites", href: "/", icon: Heart, badge: 4 },
+    { name: "Cart", href: "/", icon: ShoppingCart, badge: 2 },
     // { name: "Login", href: "/login", icon: LogIn },
   ];
 

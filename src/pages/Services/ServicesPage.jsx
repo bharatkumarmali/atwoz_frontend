@@ -1,152 +1,374 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { 
-  Code, 
-  Smartphone, 
-  Palette, 
-  Search, 
-  BarChart3, 
-  Shield,
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import {
   ArrowRight,
   CheckCircle,
-  Star
-} from 'lucide-react'
+  Star,
+  Users,
+  CreditCard,
+  FileText,
+  Smartphone,
+  Zap,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Shield,
+  TrendingUp,
+  Award,
+} from "lucide-react";
+
+// Custom hook for counter animation
+const useCounter = (end, start = 0, duration = 2000) => {
+  const [count, setCount] = useState(start);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime = null;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.floor(easeOutQuart * (end - start) + start);
+
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [end, start, duration, isInView]);
+
+  return [count, setIsInView];
+};
 
 const ServicesPage = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeService, setActiveService] = useState(1);
+  const navigate = useNavigate();
 
+  // Counter hooks for stats
+  const [serviceCenters, setServiceCentersInView] = useCounter(500);
+  const [happyCustomers, setHappyCustomersInView] = useCounter(50000);
+  const [supportAvailable, setSupportAvailableInView] = useCounter(24);
+  const [secureServices, setSecureServicesInView] = useCounter(100);
+
+  // Services from WeProvideSection
   const services = [
     {
       id: 1,
-      icon: Code,
-      title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies and best practices.",
-      features: ["React & Next.js", "Node.js & Express", "Database Design", "API Development", "E-commerce Solutions", "CMS Development"],
-      color: "from-blue-500 to-cyan-500",
+      title: "CSP",
+      subtitle: "Bank Mitra Services",
+      description:
+        "Become Bank Mitra for State Bank of India, Bank of Baroda, Bank of India and Punjab National Bank. Provide banking services to your community.",
+      longDescription:
+        "CSP (Customer Service Point) allows you to become a Bank Mitra and provide essential banking services including cash deposits, withdrawals, balance inquiries, and more. Partner with major nationalized banks to serve your local community.",
+      features: [
+        "Cash Deposit & Withdrawal",
+        "Balance Inquiry",
+        "Mini Statement",
+        "Aadhaar Enabled Services",
+        "DTH & Mobile Recharge",
+        "Insurance Products",
+      ],
+      bannerImage: "/CSP-banner.png",
+      logo: "/csp.png",
+      icon: Users,
+      color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-600",
-      price: "Starting from ₹50,000",
-      duration: "4-8 weeks"
+      borderColor: "border-blue-200",
+      price: "Commission Based",
+      duration: "Instant Setup",
+      benefits: [
+        "High Commission",
+        "Trusted Brand",
+        "Wide Network",
+        "24/7 Support",
+      ],
+      endpoint: "/services/csp",
     },
     {
       id: 2,
-      icon: Smartphone,
-      title: "Mobile Development",
-      description: "Native and cross-platform mobile applications for iOS and Android platforms.",
-      features: ["React Native", "Flutter", "Native iOS/Android", "App Store Publishing", "Push Notifications", "Offline Support"],
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-50",
-      iconColor: "text-purple-600",
-      price: "Starting from ₹75,000",
-      duration: "6-12 weeks"
+      title: "Aadhaar Centre",
+      subtitle: "UIDAI Services",
+      description:
+        "Aadhaar Seva Kendra project, UIDAI plans to set up 114 Aadhaar Seva Kendra across 53 cities in India. These include dedicated centres in all metro cities",
+      longDescription:
+        "Official Aadhaar Centre providing all UIDAI services including new enrollment, updates, corrections, and verification. Serve as an authorized center for Aadhaar-related services in your area.",
+      features: [
+        "New Aadhaar Enrollment",
+        "Biometric Updates",
+        "Address Corrections",
+        "Mobile Number Updates",
+        "Aadhaar Reprint",
+        "Verification Services",
+      ],
+      bannerImage: "/aadhar-banner.jpg",
+      logo: "/aadhar.png",
+      icon: Shield,
+      color: "from-green-500 to-green-600",
+      bgColor: "bg-green-50",
+      iconColor: "text-green-600",
+      borderColor: "border-green-200",
+      price: "Government Rates",
+      duration: "Same Day Service",
+      benefits: [
+        "Official Authorization",
+        "Government Rates",
+        "Wide Coverage",
+        "Instant Services",
+      ],
+      endpoint: "/services/aadhar",
     },
     {
       id: 3,
-      icon: Palette,
-      title: "UI/UX Design",
-      description: "Beautiful and intuitive user interfaces that enhance user experience and engagement.",
-      features: ["Wireframing", "Prototyping", "User Research", "Design Systems", "Responsive Design", "Brand Identity"],
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600",
-      price: "Starting from ₹30,000",
-      duration: "2-4 weeks"
+      title: "PAN CENTER",
+      subtitle: "UTIITSL Services",
+      description:
+        "UTI Infrastructure Technology And Services Limited (UTIITSL) is a Government Company under section 2(45) of the Companies Act 2013",
+      longDescription:
+        "Authorized PAN Center providing PAN card services including new applications, corrections, reprints, and updates. Partner with UTIITSL to offer official PAN services.",
+      features: [
+        "New PAN Application",
+        "PAN Corrections",
+        "PAN Reprint",
+        "Aadhaar Linking",
+        "Status Tracking",
+        "Document Verification",
+      ],
+      bannerImage: "/pen-center-banner.jpg",
+      logo: "/uti.png",
+      icon: FileText,
+      color: "from-purple-500 to-purple-600",
+      bgColor: "bg-purple-50",
+      iconColor: "text-purple-600",
+      borderColor: "border-purple-200",
+      price: "Government Rates",
+      duration: "7-15 Days",
+      benefits: [
+        "Official Partner",
+        "Fast Processing",
+        "Secure Service",
+        "Nationwide Network",
+      ],
+      endpoint: "/services/pan",
     },
     {
       id: 4,
-      icon: Search,
-      title: "SEO & Marketing",
-      description: "Digital marketing strategies to improve your online presence and drive growth.",
-      features: ["Search Engine Optimization", "Content Marketing", "Social Media", "Analytics", "PPC Campaigns", "Email Marketing"],
-      color: "from-orange-500 to-red-500",
+      title: "E Mitra",
+      subtitle: "Government Services",
+      description:
+        "E-mitra service has been launched by government of Rajasthan. Provide government services to citizens at their doorstep.",
+      longDescription:
+        "E-Mitra is Rajasthan's comprehensive e-governance initiative that brings government services closer to citizens. Offer various government services including certificates, payments, and more.",
+      features: [
+        "Birth & Death Certificates",
+        "Income Certificates",
+        "Caste Certificates",
+        "Property Documents",
+        "Government Payments",
+        "Utility Bill Payments",
+      ],
+      bannerImage: "/e-mitra-banner.jpg",
+      logo: "/emitra.png",
+      icon: TrendingUp,
+      color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50",
       iconColor: "text-orange-600",
-      price: "Starting from ₹25,000/month",
-      duration: "Ongoing"
+      borderColor: "border-orange-200",
+      price: "Government Rates",
+      duration: "Same Day to 7 Days",
+      benefits: [
+        "Government Backed",
+        "Wide Service Range",
+        "Trusted Platform",
+        "Citizen Friendly",
+      ],
+      endpoint: "/services/emitra",
     },
     {
       id: 5,
-      icon: BarChart3,
-      title: "Business Analytics",
-      description: "Data-driven insights to help you make informed business decisions.",
-      features: ["Data Visualization", "Performance Tracking", "KPI Monitoring", "Reports", "Predictive Analytics", "Dashboard Creation"],
-      color: "from-indigo-500 to-blue-500",
-      bgColor: "bg-indigo-50",
-      iconColor: "text-indigo-600",
-      price: "Starting from ₹40,000",
-      duration: "3-6 weeks"
-    },
-    {
-      id: 6,
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "Protect your digital assets with comprehensive security solutions.",
-      features: ["Security Audits", "Penetration Testing", "Compliance", "Incident Response", "Security Training", "24/7 Monitoring"],
-      color: "from-red-500 to-pink-500",
+      title: "Utility Service",
+      subtitle: "Bill Payment & Recharge",
+      description:
+        "Bill Payment & Recharge. Recharge your prepaid mobile, DTH account, Pay your electricity, postpaid, landline, broadband, gas, water bills.",
+      longDescription:
+        "Comprehensive utility services including mobile recharge, DTH recharge, bill payments for electricity, gas, water, and more. One-stop solution for all utility needs.",
+      features: [
+        "Mobile Recharge",
+        "DTH Recharge",
+        "Electricity Bills",
+        "Gas Bill Payments",
+        "Water Bill Payments",
+        "Broadband Bills",
+      ],
+      bannerImage: "/utilityservice-banner.jpg",
+      logo: "/utility.png",
+      icon: Zap,
+      color: "from-red-500 to-red-600",
       bgColor: "bg-red-50",
       iconColor: "text-red-600",
-      price: "Starting from ₹60,000",
-      duration: "2-4 weeks"
-    }
-  ]
+      borderColor: "border-red-200",
+      price: "No Extra Charges",
+      duration: "Instant",
+      benefits: [
+        "Instant Service",
+        "No Hidden Charges",
+        "24/7 Availability",
+        "Cashback Offers",
+      ],
+      endpoint: "/services/utility",
+    },
+  ];
 
   const testimonials = [
     {
       id: 1,
-      name: "Rahul Sharma",
-      company: "TechStart India",
+      name: "Rajesh Kumar",
+      company: "Local Business Owner",
       rating: 5,
-      comment: "Atwoz delivered an exceptional website that exceeded our expectations. The team was professional and responsive throughout the project."
+      comment:
+        "CSP services have been a game-changer for my business. The commission structure is excellent and the support team is always helpful.",
     },
     {
       id: 2,
-      name: "Priya Patel",
-      company: "Digital Solutions",
+      name: "Sunita Devi",
+      company: "Community Leader",
       rating: 5,
-      comment: "Their mobile app development service is top-notch. The app is fast, user-friendly, and has received great feedback from our users."
+      comment:
+        "Setting up the Aadhaar Centre was seamless. Now I can serve my community with official UIDAI services right in our neighborhood.",
     },
     {
       id: 3,
-      name: "Amit Kumar",
-      company: "E-commerce Pro",
+      name: "Amit Singh",
+      company: "PAN Center Operator",
       rating: 5,
-      comment: "The SEO services helped us increase our organic traffic by 300% in just 6 months. Highly recommended!"
-    }
-  ]
+      comment:
+        "The PAN Center partnership with UTIITSL has been very profitable. The process is simple and customer satisfaction is high.",
+    },
+  ];
+
+  const stats = [
+    {
+      number: serviceCenters,
+      label: "Service Centers",
+      icon: MapPin,
+      suffix: "+",
+      setInView: setServiceCentersInView,
+    },
+    {
+      number: happyCustomers,
+      label: "Happy Customers",
+      icon: Users,
+      suffix: "+",
+      setInView: setHappyCustomersInView,
+    },
+    {
+      number: supportAvailable,
+      label: "Support Available",
+      icon: Clock,
+      suffix: "/7",
+      setInView: setSupportAvailableInView,
+    },
+    {
+      number: secureServices,
+      label: "Secure Services",
+      icon: Shield,
+      suffix: "%",
+      setInView: setSecureServicesInView,
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white py-16 sm:py-20 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight">
               Our Services
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-0 leading-relaxed">
-              Comprehensive digital solutions to help your business grow and succeed in the modern world.
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl sm:max-w-4xl mx-auto px-2 sm:px-0 leading-relaxed">
+              Comprehensive digital and government services to help your
+              business grow and serve your community better.
             </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-8 bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
+            >
+              Explore Services
+            </motion.button>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section ref={ref} className="py-12 sm:py-16 md:py-20">
+      {/* Stats Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center"
+                onViewportEnter={() => stat.setInView(true)}
+              >
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="w-8 h-8 text-blue-600" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.number.toLocaleString()}
+                  {stat.suffix}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section ref={ref} className="py-16 sm:py-20 md:py-24">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+            className="text-center mb-16"
           >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              What We Provide
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover our comprehensive range of services designed to empower
+              your business and serve your community
+            </p>
+          </motion.div>
+
+          {/* Service Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {services.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -154,100 +376,231 @@ const ServicesPage = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group relative"
+                className={`group cursor-pointer ${service.bgColor} rounded-2xl p-8 border-2 ${service.borderColor} hover:border-gray-300 transition-all duration-300 hover:shadow-2xl`}
+                onClick={() => navigate(service.endpoint)}
               >
-                <div className={`${service.bgColor} rounded-xl sm:rounded-2xl p-6 sm:p-8 h-full border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-xl`}>
-                  {/* Icon */}
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${service.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:shadow-lg transition-all duration-300`}
-                  >
-                    <service.icon size={24} className="sm:w-8 sm:h-8 text-white" />
-                  </motion.div>
-
-                  {/* Content */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-gray-700 transition-colors leading-tight">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Price & Duration */}
-                  <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-white rounded-lg border border-gray-200">
-                    <div className="text-base sm:text-lg font-semibold text-gray-900 mb-1">{service.price}</div>
-                    <div className="text-xs sm:text-sm text-gray-600">Duration: {service.duration}</div>
+                <div className="flex items-start space-x-6">
+                  {/* Service Logo */}
+                  <div className="flex-shrink-0">
+                    <div
+                      className={`w-20 h-20 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                    >
+                      <img
+                        src={service.logo}
+                        alt={`${service.title} logo`}
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
                   </div>
 
-                  {/* Features */}
-                  <ul className="space-y-2 mb-4 sm:mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start text-xs sm:text-sm text-gray-600">
-                        <CheckCircle size={14} className="text-green-500 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Service Content */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      {service.description}
+                    </p>
 
-                  {/* CTA */}
-                  <motion.button
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`inline-flex items-center space-x-2 text-xs sm:text-sm font-semibold ${service.iconColor} hover:${service.iconColor} transition-colors w-full sm:w-auto justify-center sm:justify-start py-2 sm:py-0`}
-                  >
-                    <span>Get Quote</span>
-                    <ArrowRight size={14} className="sm:w-4 sm:h-4" />
-                  </motion.button>
+                    {/* Price & Duration */}
+                    <div className="flex items-center space-x-4 mb-4">
+                      <span className="bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-700 border">
+                        {service.price}
+                      </span>
+                      <span className="bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-700 border">
+                        {service.duration}
+                      </span>
+                    </div>
+
+                    {/* Features Preview */}
+                    <div className="flex flex-wrap gap-2">
+                      {service.features
+                        .slice(0, 3)
+                        .map((feature, featureIndex) => (
+                          <span
+                            key={featureIndex}
+                            className="bg-white px-3 py-1 rounded-full text-xs text-gray-600 border"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      {service.features.length > 3 && (
+                        <span className="bg-white px-3 py-1 rounded-full text-xs text-gray-600 border">
+                          +{service.features.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
+
+          {/* Active Service Details */}
+          {activeService && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200"
+            >
+              {(() => {
+                const service = services.find((s) => s.id === activeService);
+                if (!service) return null;
+
+                return (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* Left Column - Image and Info */}
+                    <div>
+                      <div className="relative mb-6">
+                        <img
+                          src={service.bannerImage}
+                          alt={`${service.title} banner`}
+                          className="w-full h-64 object-cover rounded-xl"
+                        />
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                          <span className="text-sm font-semibold text-gray-700">
+                            {service.subtitle}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center`}
+                          >
+                            <service.icon className="w-6 h-6 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900">
+                              {service.title}
+                            </h3>
+                            <p className="text-gray-600">{service.subtitle}</p>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed">
+                          {service.longDescription}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right Column - Features and Benefits */}
+                    <div className="space-y-6">
+                      {/* Features */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                          What We Offer
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {service.features.map((feature, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center space-x-3"
+                            >
+                              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                              <span className="text-gray-700">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Benefits */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                          Key Benefits
+                        </h4>
+                        <div className="grid grid-cols-2 gap-3">
+                          {service.benefits.map((benefit, index) => (
+                            <div
+                              key={index}
+                              className="bg-gray-50 px-4 py-3 rounded-lg border border-gray-200"
+                            >
+                              <span className="text-sm font-medium text-gray-700">
+                                {benefit}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CTA */}
+                      <div className="pt-4">
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className={`w-full bg-gradient-to-r ${service.color} text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2`}
+                        >
+                          <span>Get Started</span>
+                          <ArrowRight className="w-5 h-5" />
+                        </motion.button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+            </motion.div>
+          )}
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <section className="py-16 sm:py-20 md:py-24 bg-white">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16"
+            className="text-center mb-16"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-              What Our Clients Say
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              What Our Partners Say
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-0 leading-relaxed">
-              Don't just take our word for it. Here's what our satisfied clients have to say about our services.
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Don't just take our word for it. Here's what our satisfied service
+              partners have to say about working with us.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-gray-100"
+                className="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-lg transition-all duration-300"
               >
                 {/* Rating */}
-                <div className="flex items-center mb-3 sm:mb-4">
+                <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={18} className="sm:w-5 sm:h-5 text-yellow-400 fill-current" />
+                    <Star
+                      key={i}
+                      size={20}
+                      className="text-yellow-400 fill-current"
+                    />
                   ))}
                 </div>
 
                 {/* Comment */}
-                <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed text-lg">
                   "{testimonial.comment}"
                 </p>
 
                 {/* Author */}
-                <div>
-                  <div className="font-semibold text-gray-900 text-sm sm:text-base">{testimonial.name}</div>
-                  <div className="text-xs sm:text-sm text-gray-600">{testimonial.company}</div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <span className="text-blue-600 font-semibold text-lg">
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-gray-600">{testimonial.company}</div>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -256,31 +609,104 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="container mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-              Ready to Get Started?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              Ready to Partner With Us?
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed">
-              Let's discuss your project requirements and create something amazing together.
+            <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join our network of successful service providers and start earning
+              while serving your community. Let's create something amazing
+              together.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transition-all duration-300 w-full sm:w-auto max-w-xs sm:max-w-none"
-            >
-              Contact Us Today
-            </motion.button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
+              >
+                Become a Partner
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+              >
+                Contact Us
+              </motion.button>
+            </div>
           </motion.div>
         </div>
       </section>
-    </div>
-  )
-}
 
-export default ServicesPage 
+      {/* Contact Info Section */}
+      <section className="py-16 bg-gray-900 text-white">
+        <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-center md:justify-start space-x-3">
+                  <Phone className="w-5 h-5 text-blue-400" />
+                  <span>+91 98765 43210</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start space-x-3">
+                  <Mail className="w-5 h-5 text-blue-400" />
+                  <span>info@atwoz.com</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-start space-x-3">
+                  <MapPin className="w-5 h-5 text-blue-400" />
+                  <span>Rajasthan, India</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <h3 className="text-2xl font-bold mb-4">Quick Links</h3>
+              <div className="space-y-2">
+                <div className="hover:text-blue-400 cursor-pointer transition-colors">
+                  About Us
+                </div>
+                <div className="hover:text-blue-400 cursor-pointer transition-colors">
+                  Services
+                </div>
+                <div className="hover:text-blue-400 cursor-pointer transition-colors">
+                  Partners
+                </div>
+                <div className="hover:text-blue-400 cursor-pointer transition-colors">
+                  Contact
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center md:text-right">
+              <h3 className="text-2xl font-bold mb-4">Why Choose Us</h3>
+              <div className="space-y-2">
+                <div className="flex items-center justify-center md:justify-end space-x-2">
+                  <Award className="w-5 h-5 text-yellow-400" />
+                  <span>Trusted Partner</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-end space-x-2">
+                  <Shield className="w-5 h-5 text-green-400" />
+                  <span>Secure Services</span>
+                </div>
+                <div className="flex items-center justify-center md:justify-end space-x-2">
+                  <TrendingUp className="w-5 h-5 text-blue-400" />
+                  <span>Growing Network</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default ServicesPage;

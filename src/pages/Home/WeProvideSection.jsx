@@ -55,7 +55,7 @@ const WeProvideSection = () => {
         "become Bank Mitra for State Bank of India, Bank of Baroda, Bank of India and Punjab National Bank.",
       bannerImage: "CSP-banner.png",
       logo: "/csp.png",
-      endpoint: "/",
+      endpoint: "/services/csp",
       buttonColor: "bg-gray-100",
     },
     {
@@ -65,7 +65,7 @@ const WeProvideSection = () => {
         "Aadhaar Seva Kendra project, UIDAI plans to set up 114 Aadhaar Seva Kendra across 53 cities in India. These include dedicated centres in all metro cities",
       bannerImage: "/aadhar-banner.jpg",
       logo: "/aadhar.png",
-      endpoint: "/",
+      endpoint: "/services/aadhar",
       buttonColor: "bg-gray-100",
     },
     {
@@ -75,7 +75,7 @@ const WeProvideSection = () => {
         "UTI Infrastructure Technology And Services Limited (UTIITSL) is a Government Company under section 2(45) of the Companies Act 2013,",
       bannerImage: "/pen-center-banner.jpg",
       logo: "/uti.png",
-      endpoint: "/",
+      endpoint: "/services/pan",
       buttonColor: "bg-gray-100",
     },
     {
@@ -85,7 +85,7 @@ const WeProvideSection = () => {
         "E-mitra service has been launched by government of  Rajasthan.",
       bannerImage: "/e-mitra-banner.jpg",
       logo: "/emitra.png",
-      endpoint: "/",
+      endpoint: "/services/emitra",
       buttonColor: "bg-gray-100",
     },
     {
@@ -95,7 +95,7 @@ const WeProvideSection = () => {
         "Bill Payment & Recharge. Recharge your prepaid mobile, DTH account, Pay your electricity, postpaid, landline, broadband, gas, water bills.",
       bannerImage: "/utilityservice-banner.jpg",
       logo: "/utility.png",
-      endpoint: "/",
+      endpoint: "/services/utility",
       buttonColor: "bg-gray-100",
     },
   ];
@@ -157,7 +157,7 @@ const WeProvideSection = () => {
               <SwiperSlide key={service.id}>
                 <Link to={service.endpoint}>
                   <div
-                    className={`group-${service.id} h-[500px] cursor-default relative border border-gray-200 bg-white rounded-lg hover:shadow-xl transition-all duration-300 flex flex-col`}
+                    className={`group-${service.id} h-[500px] cursor-pointer relative border border-gray-200 bg-white rounded-lg hover:shadow-xl transition-all duration-300 flex flex-col`}
                   >
                     <div className="relative">
                       {/* Banner Image */}
