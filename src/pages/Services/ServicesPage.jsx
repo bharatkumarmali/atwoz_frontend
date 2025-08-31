@@ -437,7 +437,7 @@ const ServicesPage = () => {
           </div>
 
           {/* Active Service Details */}
-          {activeService && (
+          {/* {activeService && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -449,9 +449,9 @@ const ServicesPage = () => {
                 if (!service) return null;
 
                 return (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Left Column - Image and Info */}
-                    <div>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"> */}
+          {/* Left Column - Image and Info */}
+          {/* <div>
                       <div className="relative mb-6">
                         <img
                           src={service.bannerImage}
@@ -484,12 +484,12 @@ const ServicesPage = () => {
                           {service.longDescription}
                         </p>
                       </div>
-                    </div>
+                    </div> */}
 
-                    {/* Right Column - Features and Benefits */}
-                    <div className="space-y-6">
-                      {/* Features */}
-                      <div>
+          {/* Right Column - Features and Benefits */}
+          {/* <div className="space-y-6"> */}
+          {/* Features */}
+          {/* <div>
                         <h4 className="text-lg font-semibold text-gray-900 mb-4">
                           What We Offer
                         </h4>
@@ -504,10 +504,10 @@ const ServicesPage = () => {
                             </div>
                           ))}
                         </div>
-                      </div>
+                      </div> */}
 
-                      {/* Benefits */}
-                      <div>
+          {/* Benefits */}
+          {/* <div>
                         <h4 className="text-lg font-semibold text-gray-900 mb-4">
                           Key Benefits
                         </h4>
@@ -523,10 +523,10 @@ const ServicesPage = () => {
                             </div>
                           ))}
                         </div>
-                      </div>
+                      </div> */}
 
-                      {/* CTA */}
-                      <div className="pt-4">
+          {/* CTA */}
+          {/* <div className="pt-4">
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
@@ -535,13 +535,13 @@ const ServicesPage = () => {
                           <span>Get Started</span>
                           <ArrowRight className="w-5 h-5" />
                         </motion.button>
-                      </div>
-                    </div>
+                      </div> */}
+          {/* </div>
                   </div>
                 );
               })()}
             </motion.div>
-          )}
+          )} */}
         </div>
       </section>
 
