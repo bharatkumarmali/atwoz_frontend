@@ -89,16 +89,16 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Mail size={16} />
-                  <a href="mailto:kishanmalimali815@gmail.com">
+                  <a href={`mailto:${import.meta.env.VITE_EMAIL_ID}`}>
                     <span>{import.meta.env.VITE_EMAIL_ID}</span>
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Phone size={16} />
-                  <a href="tel:+919324015719">
+                  <a href={`tel:${import.meta.env.VITE_MOBILE_NO_1}`}>
                     <span>+91 {import.meta.env.VITE_MOBILE_NO_1} ,</span>
                   </a>{" "}
-                  <a href="tel:+919672132307">
+                  <a href={`tel:${import.meta.env.VITE_MOBILE_NO_2}`}>
                     <span>+91 {import.meta.env.VITE_MOBILE_NO_2}</span>
                   </a>
                 </div>
