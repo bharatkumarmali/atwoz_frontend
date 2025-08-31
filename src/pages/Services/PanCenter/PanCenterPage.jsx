@@ -306,15 +306,17 @@ Remarks: _____________________
               >
                 <button
                   // onClick={downloadForm}
-                  className="bg-white text-purple-600 px-6 py-3 rounded-xl font-semibold hover:bg-purple-50 transition-colors flex items-center justify-center space-x-2 shadow-lg"
+                  className="bg-white text-purple-600 px-6 py-3 cursor-pointer rounded-xl font-semibold hover:bg-purple-50 transition-colors flex items-center justify-center space-x-2 shadow-lg"
                 >
                   <Download className="w-5 h-5" />
                   <span>Download Application Form</span>
                 </button>
-                <button className="border-2 border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-purple-600 transition-colors flex items-center justify-center space-x-2">
-                  <Phone className="w-5 h-5" />
-                  <span>Contact Us</span>
-                </button>
+                <a href={`tel:+91${import.meta.env.VITE_MOBILE_NO_1}`}>
+                  <button className="border-2 border-white text-white px-6 py-3 cursor-pointer rounded-xl font-semibold hover:bg-white hover:text-purple-600 transition-colors flex items-center justify-center space-x-2">
+                    <Phone className="w-5 h-5" />
+                    <span>Contact Us</span>
+                  </button>
+                </a>
               </motion.div>
             </div>
             <div className="relative">
@@ -406,7 +408,7 @@ Remarks: _____________________
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-4 h-4 text-purple-500" />
-                      <span>{import.meta.env.VITE_HELP_SPPORT_EMAIL_ID}</span>
+                      <span>{import.meta.env.VITE_HELP_SUPPORT_EMAIL_ID}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Clock className="w-4 h-4 text-purple-500" />

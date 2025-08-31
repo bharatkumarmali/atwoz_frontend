@@ -40,23 +40,87 @@ const EmitraPage = () => {
   const [activeTab, setActiveTab] = useState("overview");
 
   const tabs = [
-    { id: "overview", label: "Overview", icon: Info, color: "from-orange-500 to-orange-600" },
-    { id: "services", label: "Government Services", icon: TrendingUp, color: "from-yellow-500 to-yellow-600" },
-    { id: "benefits", label: "Benefits & Commission", icon: Award, color: "from-red-500 to-red-600" },
-    { id: "requirements", label: "Requirements", icon: CheckCircle, color: "from-green-500 to-green-600" },
-    { id: "documents", label: "Documents", icon: FileText, color: "from-blue-500 to-blue-600" },
-    { id: "process", label: "Application Process", icon: TrendingUp, color: "from-purple-500 to-purple-600" },
-    { id: "training", label: "Training & Support", icon: BookOpen, color: "from-teal-500 to-teal-600" },
-    { id: "faq", label: "FAQ", icon: HelpCircle, color: "from-pink-500 to-pink-600" },
+    {
+      id: "overview",
+      label: "Overview",
+      icon: Info,
+      color: "from-orange-500 to-orange-600",
+    },
+    {
+      id: "services",
+      label: "Government Services",
+      icon: TrendingUp,
+      color: "from-yellow-500 to-yellow-600",
+    },
+    {
+      id: "benefits",
+      label: "Benefits & Commission",
+      icon: Award,
+      color: "from-red-500 to-red-600",
+    },
+    {
+      id: "requirements",
+      label: "Requirements",
+      icon: CheckCircle,
+      color: "from-green-500 to-green-600",
+    },
+    {
+      id: "documents",
+      label: "Documents",
+      icon: FileText,
+      color: "from-blue-500 to-blue-600",
+    },
+    {
+      id: "process",
+      label: "Application Process",
+      icon: TrendingUp,
+      color: "from-purple-500 to-purple-600",
+    },
+    {
+      id: "training",
+      label: "Training & Support",
+      icon: BookOpen,
+      color: "from-teal-500 to-teal-600",
+    },
+    {
+      id: "faq",
+      label: "FAQ",
+      icon: HelpCircle,
+      color: "from-pink-500 to-pink-600",
+    },
   ];
 
   const governmentServices = [
-    { name: "Birth & Death Certificates", icon: FileCheck, description: "Issue official birth and death certificates" },
-    { name: "Income Certificates", icon: Receipt, description: "Generate income certificates for various purposes" },
-    { name: "Caste Certificates", icon: FileText, description: "Issue caste certificates and documents" },
-    { name: "Property Documents", icon: Building, description: "Handle property-related government documents" },
-    { name: "Government Payments", icon: CreditCard, description: "Process government fees and payments" },
-    { name: "Utility Bill Payments", icon: Receipt, description: "Handle utility bill payments" },
+    {
+      name: "Birth & Death Certificates",
+      icon: FileCheck,
+      description: "Issue official birth and death certificates",
+    },
+    {
+      name: "Income Certificates",
+      icon: Receipt,
+      description: "Generate income certificates for various purposes",
+    },
+    {
+      name: "Caste Certificates",
+      icon: FileText,
+      description: "Issue caste certificates and documents",
+    },
+    {
+      name: "Property Documents",
+      icon: Building,
+      description: "Handle property-related government documents",
+    },
+    {
+      name: "Government Payments",
+      icon: CreditCard,
+      description: "Process government fees and payments",
+    },
+    {
+      name: "Utility Bill Payments",
+      icon: Receipt,
+      description: "Handle utility bill payments",
+    },
   ];
 
   const commission = {
@@ -106,20 +170,23 @@ const EmitraPage = () => {
   const faq = [
     {
       question: "What is the investment required?",
-      answer: "Total investment is ₹40,000 including E-Mitra fees, equipment, and setup costs."
+      answer:
+        "Total investment is ₹40,000 including E-Mitra fees, equipment, and setup costs.",
     },
     {
       question: "How long does approval take?",
-      answer: "E-Mitra approval takes 20-25 working days after document submission."
+      answer:
+        "E-Mitra approval takes 20-25 working days after document submission.",
     },
     {
       question: "What are the operating hours?",
-      answer: "Standard operating hours are 8 AM to 8 PM, Monday to Saturday."
+      answer: "Standard operating hours are 8 AM to 8 PM, Monday to Saturday.",
     },
     {
       question: "Is training mandatory?",
-      answer: "Yes, E-Mitra training is mandatory and must be completed before center activation."
-    }
+      answer:
+        "Yes, E-Mitra training is mandatory and must be completed before center activation.",
+    },
   ];
 
   const downloadForm = () => {
@@ -168,11 +235,11 @@ Approved/Rejected: ____________
 Remarks: _____________________
     `;
 
-    const blob = new Blob([formContent], { type: 'text/plain' });
+    const blob = new Blob([formContent], { type: "text/plain" });
     const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'E-Mitra_Application_Form.txt';
+    a.download = "E-Mitra_Application_Form.txt";
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
@@ -227,7 +294,10 @@ Remarks: _____________________
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-lg text-orange-100 mb-8 leading-relaxed"
               >
-                E-Mitra is Rajasthan's comprehensive e-governance initiative that brings government services closer to citizens. Offer various government services including certificates, payments, and more.
+                E-Mitra is Rajasthan's comprehensive e-governance initiative
+                that brings government services closer to citizens. Offer
+                various government services including certificates, payments,
+                and more.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -237,15 +307,17 @@ Remarks: _____________________
               >
                 <button
                   // onClick={downloadForm}
-                  className="bg-white text-orange-600 px-6 py-3 rounded-xl font-semibold hover:bg-orange-50 transition-colors flex items-center justify-center space-x-2 shadow-lg"
+                  className="bg-white text-orange-600 px-6 py-3 cursor-pointer rounded-xl font-semibold hover:bg-orange-50 transition-colors flex items-center justify-center space-x-2 shadow-lg"
                 >
                   <Download className="w-5 h-5" />
                   <span>Download Application Form</span>
                 </button>
-                <button className="border-2 border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-colors flex items-center justify-center space-x-2">
-                  <Phone className="w-5 h-5" />
-                  <span>Contact Us</span>
-                </button>
+                <a href={`tel:+91${import.meta.env.VITE_MOBILE_NO_1}`}>
+                  <button className="border-2 border-white text-white px-6 py-3 cursor-pointer rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-colors flex items-center justify-center space-x-2">
+                    <Phone className="w-5 h-5" />
+                    <span>Contact Us</span>
+                  </button>
+                </a>
               </motion.div>
             </div>
             <div className="relative">
@@ -262,8 +334,12 @@ Remarks: _____________________
                 />
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-orange-600">Government Rates</div>
-                    <div className="text-sm text-gray-600">Same Day to 7 Days</div>
+                    <div className="text-2xl font-bold text-orange-600">
+                      Government Rates
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Same Day to 7 Days
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -293,14 +369,20 @@ Remarks: _____________________
                           : "text-gray-600 hover:bg-orange-50 hover:text-orange-700 hover:shadow-md"
                       }`}
                     >
-                      <div className={`p-2 rounded-lg ${
-                        activeTab === tab.id 
-                          ? "bg-white/20" 
-                          : "bg-orange-100 group-hover:bg-orange-200"
-                      }`}>
-                        <tab.icon className={`w-5 h-5 ${
-                          activeTab === tab.id ? "text-white" : "text-orange-600"
-                        }`} />
+                      <div
+                        className={`p-2 rounded-lg ${
+                          activeTab === tab.id
+                            ? "bg-white/20"
+                            : "bg-orange-100 group-hover:bg-orange-200"
+                        }`}
+                      >
+                        <tab.icon
+                          className={`w-5 h-5 ${
+                            activeTab === tab.id
+                              ? "text-white"
+                              : "text-orange-600"
+                          }`}
+                        />
                       </div>
                       <span className="font-medium">{tab.label}</span>
                     </button>
@@ -314,8 +396,12 @@ Remarks: _____________________
                       <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Get Expert Help</h4>
-                      <p className="text-sm text-gray-600">24/7 Support Available</p>
+                      <h4 className="font-bold text-gray-900">
+                        Get Expert Help
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        24/7 Support Available
+                      </p>
                     </div>
                   </div>
                   <div className="space-y-3 text-sm text-gray-700">
@@ -325,7 +411,7 @@ Remarks: _____________________
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-4 h-4 text-orange-500" />
-                      <span>{import.meta.env.VITE_HELP_SPPORT_EMAIL_ID}</span>
+                      <span>{import.meta.env.VITE_HELP_SUPPORT_EMAIL_ID}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Clock className="w-4 h-4 text-orange-500" />
@@ -367,9 +453,12 @@ Remarks: _____________________
                       <span>Service Overview</span>
                     </h2>
                     <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                      E-Mitra is Rajasthan's comprehensive e-governance initiative that brings government services closer to citizens. Offer various government services including certificates, payments, and more to serve your community.
+                      E-Mitra is Rajasthan's comprehensive e-governance
+                      initiative that brings government services closer to
+                      citizens. Offer various government services including
+                      certificates, payments, and more to serve your community.
                     </p>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                       <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
                         <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
@@ -378,11 +467,18 @@ Remarks: _____________________
                         </h3>
                         <div className="space-y-3">
                           {governmentServices.map((service, index) => (
-                            <div key={index} className="flex items-center space-x-3">
+                            <div
+                              key={index}
+                              className="flex items-center space-x-3"
+                            >
                               <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                               <div>
-                                <span className="text-gray-700 font-medium">{service.name}</span>
-                                <p className="text-sm text-gray-500">{service.description}</p>
+                                <span className="text-gray-700 font-medium">
+                                  {service.name}
+                                </span>
+                                <p className="text-sm text-gray-500">
+                                  {service.description}
+                                </p>
                               </div>
                             </div>
                           ))}
@@ -394,8 +490,16 @@ Remarks: _____________________
                           <span>Key Benefits</span>
                         </h3>
                         <div className="space-y-3">
-                          {["Government Backed", "Wide Service Range", "Trusted Platform", "Citizen Friendly"].map((benefit, index) => (
-                            <div key={index} className="flex items-center space-x-3">
+                          {[
+                            "Government Backed",
+                            "Wide Service Range",
+                            "Trusted Platform",
+                            "Citizen Friendly",
+                          ].map((benefit, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center space-x-3"
+                            >
                               <Star className="w-5 h-5 text-yellow-500 flex-shrink-0" />
                               <span className="text-gray-700">{benefit}</span>
                             </div>
@@ -411,12 +515,22 @@ Remarks: _____________________
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-gray-800 mb-2">Training Program</h4>
-                          <p className="text-gray-700">4-day training program covering e-governance services, document processing, and citizen services.</p>
+                          <h4 className="font-semibold text-gray-800 mb-2">
+                            Training Program
+                          </h4>
+                          <p className="text-gray-700">
+                            4-day training program covering e-governance
+                            services, document processing, and citizen services.
+                          </p>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-800 mb-2">Support</h4>
-                          <p className="text-gray-700">E-Mitra support team, regular updates, and government liaison assistance.</p>
+                          <h4 className="font-semibold text-gray-800 mb-2">
+                            Support
+                          </h4>
+                          <p className="text-gray-700">
+                            E-Mitra support team, regular updates, and
+                            government liaison assistance.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -451,8 +565,12 @@ Remarks: _____________________
                               <service.icon className="w-6 h-6 text-white" />
                             </div>
                             <div>
-                              <h3 className="text-lg font-semibold text-gray-900 mb-1">{service.name}</h3>
-                              <p className="text-gray-600">{service.description}</p>
+                              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                {service.name}
+                              </h3>
+                              <p className="text-gray-600">
+                                {service.description}
+                              </p>
                             </div>
                           </div>
                         </motion.div>
@@ -475,25 +593,31 @@ Remarks: _____________________
                       <Award className="w-8 h-8 text-red-600" />
                       <span>Benefits & Commission Structure</span>
                     </h2>
-                    
+
                     <div className="mb-8">
                       <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
                         <DollarSign className="w-6 h-6 text-orange-600" />
                         <span>Commission Structure</span>
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {Object.entries(commission).map(([service, commission], index) => (
-                          <motion.div
-                            key={service}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-4 border border-orange-200 hover:shadow-lg transition-all duration-300"
-                          >
-                            <div className="font-semibold text-gray-800 mb-1">{service}</div>
-                            <div className="text-lg font-bold text-green-600">{commission}</div>
-                          </motion.div>
-                        ))}
+                        {Object.entries(commission).map(
+                          ([service, commission], index) => (
+                            <motion.div
+                              key={service}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.6, delay: index * 0.1 }}
+                              className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-4 border border-orange-200 hover:shadow-lg transition-all duration-300"
+                            >
+                              <div className="font-semibold text-gray-800 mb-1">
+                                {service}
+                              </div>
+                              <div className="text-lg font-bold text-green-600">
+                                {commission}
+                              </div>
+                            </motion.div>
+                          )
+                        )}
                       </div>
                     </div>
 
@@ -503,8 +627,16 @@ Remarks: _____________________
                         <span>Why Choose E-Mitra?</span>
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {["Government Backed", "Wide Service Range", "Trusted Platform", "Citizen Friendly"].map((benefit, index) => (
-                          <div key={index} className="flex items-center space-x-3">
+                        {[
+                          "Government Backed",
+                          "Wide Service Range",
+                          "Trusted Platform",
+                          "Citizen Friendly",
+                        ].map((benefit, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center space-x-3"
+                          >
                             <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                             <span className="text-gray-700">{benefit}</span>
                           </div>
@@ -528,7 +660,7 @@ Remarks: _____________________
                       <CheckCircle className="w-8 h-8 text-green-600" />
                       <span>Requirements & Eligibility</span>
                     </h2>
-                    
+
                     <div className="mb-8">
                       <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
                         <Settings className="w-6 h-6 text-orange-600" />
@@ -557,10 +689,20 @@ Remarks: _____________________
                       </h3>
                       <ul className="space-y-2 text-gray-700">
                         <li>• All documents must be valid and not expired</li>
-                        <li>• Minimum balance must be maintained in the bank account</li>
-                        <li>• Shop/office space must be easily accessible to customers</li>
-                        <li>• Internet connection must be stable and reliable</li>
-                        <li>• Training completion is mandatory before operations</li>
+                        <li>
+                          • Minimum balance must be maintained in the bank
+                          account
+                        </li>
+                        <li>
+                          • Shop/office space must be easily accessible to
+                          customers
+                        </li>
+                        <li>
+                          • Internet connection must be stable and reliable
+                        </li>
+                        <li>
+                          • Training completion is mandatory before operations
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -580,7 +722,7 @@ Remarks: _____________________
                       <FileText className="w-8 h-8 text-blue-600" />
                       <span>Required Documents</span>
                     </h2>
-                    
+
                     <div className="mb-8">
                       <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
                         <FileText className="w-6 h-6 text-orange-600" />
@@ -611,8 +753,12 @@ Remarks: _____________________
                         <li>• All copies must be clear and legible</li>
                         <li>• PAN and Aadhaar must be linked</li>
                         <li>• Address proof should match current residence</li>
-                        <li>• Bank statement should show regular transactions</li>
-                        <li>• Photos should be recent (not older than 6 months)</li>
+                        <li>
+                          • Bank statement should show regular transactions
+                        </li>
+                        <li>
+                          • Photos should be recent (not older than 6 months)
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -632,7 +778,7 @@ Remarks: _____________________
                       <TrendingUp className="w-8 h-8 text-purple-600" />
                       <span>Application Process</span>
                     </h2>
-                    
+
                     <div className="mb-8">
                       <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
                         <Calendar className="w-6 h-6 text-orange-600" />
@@ -651,7 +797,9 @@ Remarks: _____________________
                               {index + 1}
                             </div>
                             <div className="flex-1 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
-                              <span className="text-gray-700 font-medium">{step}</span>
+                              <span className="text-gray-700 font-medium">
+                                {step}
+                              </span>
                             </div>
                           </motion.div>
                         ))}
@@ -665,15 +813,23 @@ Remarks: _____________________
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                         <div className="bg-white rounded-xl p-4 border border-orange-200">
-                          <div className="text-2xl font-bold text-orange-600">1-3 Days</div>
-                          <div className="text-gray-600">Document Verification</div>
+                          <div className="text-2xl font-bold text-orange-600">
+                            1-3 Days
+                          </div>
+                          <div className="text-gray-600">
+                            Document Verification
+                          </div>
                         </div>
                         <div className="bg-white rounded-xl p-4 border border-orange-200">
-                          <div className="text-2xl font-bold text-orange-600">20-25 Days</div>
+                          <div className="text-2xl font-bold text-orange-600">
+                            20-25 Days
+                          </div>
                           <div className="text-gray-600">E-Mitra Approval</div>
                         </div>
                         <div className="bg-white rounded-xl p-4 border border-orange-200">
-                          <div className="text-2xl font-bold text-orange-600">2-3 Days</div>
+                          <div className="text-2xl font-bold text-orange-600">
+                            2-3 Days
+                          </div>
                           <div className="text-gray-600">Training & Setup</div>
                         </div>
                       </div>
@@ -695,7 +851,7 @@ Remarks: _____________________
                       <BookOpen className="w-8 h-8 text-teal-600" />
                       <span>Training & Support</span>
                     </h2>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                       <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-6 border border-teal-200">
                         <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
@@ -704,20 +860,33 @@ Remarks: _____________________
                         </h3>
                         <div className="space-y-4">
                           <div className="bg-white rounded-lg p-4 border border-teal-200">
-                            <h4 className="font-semibold text-gray-800 mb-2">Duration</h4>
-                            <p className="text-gray-700">4-day training program</p>
+                            <h4 className="font-semibold text-gray-800 mb-2">
+                              Duration
+                            </h4>
+                            <p className="text-gray-700">
+                              4-day training program
+                            </p>
                           </div>
                           <div className="bg-white rounded-lg p-4 border border-teal-200">
-                            <h4 className="font-semibold text-gray-800 mb-2">Coverage</h4>
-                            <p className="text-gray-700">E-governance services, document processing, and citizen services</p>
+                            <h4 className="font-semibold text-gray-800 mb-2">
+                              Coverage
+                            </h4>
+                            <p className="text-gray-700">
+                              E-governance services, document processing, and
+                              citizen services
+                            </p>
                           </div>
                           <div className="bg-white rounded-lg p-4 border border-teal-200">
-                            <h4 className="font-semibold text-gray-800 mb-2">Certification</h4>
-                            <p className="text-gray-700">E-Mitra certification upon completion</p>
+                            <h4 className="font-semibold text-gray-800 mb-2">
+                              Certification
+                            </h4>
+                            <p className="text-gray-700">
+                              E-Mitra certification upon completion
+                            </p>
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
                         <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                           <Zap className="w-6 h-6 text-yellow-600" />
@@ -725,16 +894,28 @@ Remarks: _____________________
                         </h3>
                         <div className="space-y-4">
                           <div className="bg-white rounded-lg p-4 border border-yellow-200">
-                            <h4 className="font-semibold text-gray-800 mb-2">Technical Support</h4>
-                            <p className="text-gray-700">E-Mitra support team</p>
+                            <h4 className="font-semibold text-gray-800 mb-2">
+                              Technical Support
+                            </h4>
+                            <p className="text-gray-700">
+                              E-Mitra support team
+                            </p>
                           </div>
                           <div className="bg-white rounded-lg p-4 border border-yellow-200">
-                            <h4 className="font-semibold text-gray-800 mb-2">Updates</h4>
-                            <p className="text-gray-700">Regular software and protocol updates</p>
+                            <h4 className="font-semibold text-gray-800 mb-2">
+                              Updates
+                            </h4>
+                            <p className="text-gray-700">
+                              Regular software and protocol updates
+                            </p>
                           </div>
                           <div className="bg-white rounded-lg p-4 border border-yellow-200">
-                            <h4 className="font-semibold text-gray-800 mb-2">Government Liaison</h4>
-                            <p className="text-gray-700">Government liaison assistance and support</p>
+                            <h4 className="font-semibold text-gray-800 mb-2">
+                              Government Liaison
+                            </h4>
+                            <p className="text-gray-700">
+                              Government liaison assistance and support
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -756,7 +937,7 @@ Remarks: _____________________
                       <HelpCircle className="w-8 h-8 text-pink-600" />
                       <span>Frequently Asked Questions</span>
                     </h2>
-                    
+
                     <div className="space-y-6">
                       {faq.map((faq, index) => (
                         <motion.div
@@ -770,7 +951,9 @@ Remarks: _____________________
                             <HelpCircle className="w-5 h-5 text-pink-600" />
                             <span>{faq.question}</span>
                           </h3>
-                          <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                          <p className="text-gray-700 leading-relaxed">
+                            {faq.answer}
+                          </p>
                         </motion.div>
                       ))}
                     </div>
@@ -781,7 +964,8 @@ Remarks: _____________________
                         <span>Still Have Questions?</span>
                       </h3>
                       <p className="text-gray-700 mb-4">
-                        Our team is here to help you with any additional questions or concerns.
+                        Our team is here to help you with any additional
+                        questions or concerns.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4">
                         <button className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-yellow-600 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg">
@@ -815,7 +999,8 @@ Remarks: _____________________
               Ready to Start Your E-Mitra Centre?
             </h2>
             <p className="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
-              Join our network of successful E-Mitra service providers and start earning while serving your community.
+              Join our network of successful E-Mitra service providers and start
+              earning while serving your community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button

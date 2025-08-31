@@ -27,10 +27,11 @@ const Footer = () => {
       { name: "Contact", href: "/contact" },
     ],
     services: [
-      { name: "Web Development", href: "/services" },
-      { name: "Mobile Apps", href: "/services" },
-      { name: "UI/UX Design", href: "/services" },
-      { name: "Digital Marketing", href: "/services" },
+      { name: "Aadhaar Services", href: "/services/aadhar" },
+      { name: "E-Mitra Services", href: "/services/emitra" },
+      { name: "CSP Services", href: "/services/csp" },
+      { name: "PAN Services", href: "/services/pan" },
+      { name: "Utility Services", href: "/services/utility" },
     ],
     support: [
       { name: "Help Center", href: "/help" },

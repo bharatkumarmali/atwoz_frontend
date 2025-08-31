@@ -57,7 +57,7 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: [import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_HELP_SPPORT_EMAIL_ID],
+      details: [import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_HELP_SUPPORT_EMAIL_ID],
       color: "from-blue-500 to-cyan-500",
     },
     {
@@ -381,7 +381,7 @@ const ContactPage = () => {
                       <p className="text-gray-600">
                         {import.meta.env.VITE_EMAIL_ID}
                       </p>
-                      <p className="text-gray-600">{import.meta.env.VITE_HELP_SPPORT_EMAIL_ID}</p>
+                      <p className="text-gray-600">{import.meta.env.VITE_HELP_SUPPORT_EMAIL_ID}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">

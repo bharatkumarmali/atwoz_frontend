@@ -50,16 +50,6 @@ const WeProvideSection = () => {
   const services = [
     {
       id: 1,
-      title: "CSP",
-      description:
-        "become Bank Mitra for State Bank of India, Bank of Baroda, Bank of India and Punjab National Bank.",
-      bannerImage: "CSP-banner.png",
-      logo: "/csp.png",
-      endpoint: "/services/csp",
-      buttonColor: "bg-gray-100",
-    },
-    {
-      id: 2,
       title: "Aadhaar Centre",
       description:
         "Aadhaar Seva Kendra project, UIDAI plans to set up 114 Aadhaar Seva Kendra across 53 cities in India. These include dedicated centres in all metro cities",
@@ -69,23 +59,33 @@ const WeProvideSection = () => {
       buttonColor: "bg-gray-100",
     },
     {
-      id: 3,
-      title: "PAN CENTER",
-      description:
-        "UTI Infrastructure Technology And Services Limited (UTIITSL) is a Government Company under section 2(45) of the Companies Act 2013,",
-      bannerImage: "/pen-center-banner.jpg",
-      logo: "/uti.png",
-      endpoint: "/services/pan",
-      buttonColor: "bg-gray-100",
-    },
-    {
-      id: 4,
+      id: 2,
       title: "E Mitra",
       description:
         "E-mitra service has been launched by government of  Rajasthan.",
       bannerImage: "/e-mitra-banner.jpg",
       logo: "/emitra.png",
       endpoint: "/services/emitra",
+      buttonColor: "bg-gray-100",
+    },
+    {
+      id: 3,
+      title: "CSP",
+      description:
+        "become Bank Mitra for State Bank of India, Bank of Baroda, Bank of India and Punjab National Bank.",
+      bannerImage: "CSP-banner.png",
+      logo: "/csp.png",
+      endpoint: "/services/csp",
+      buttonColor: "bg-gray-100",
+    },
+    {
+      id: 4,
+      title: "PAN CENTER",
+      description:
+        "UTI Infrastructure Technology And Services Limited (UTIITSL) is a Government Company under section 2(45) of the Companies Act 2013,",
+      bannerImage: "/pen-center-banner.jpg",
+      logo: "/uti.png",
+      endpoint: "/services/pan",
       buttonColor: "bg-gray-100",
     },
     {
@@ -136,7 +136,7 @@ const WeProvideSection = () => {
               nextEl: ".service-arrow-right",
               prevEl: ".service-arrow-left",
             }}
-            loop={true}
+            loop={false}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
