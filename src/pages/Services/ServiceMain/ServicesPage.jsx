@@ -350,7 +350,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Section */}
-      <section ref={ref} className="py-16 sm:py-20 md:py-24">
+      <section ref={ref} className="pt-16 sm:pt-20 md:pt-24">
         <div className="container mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
