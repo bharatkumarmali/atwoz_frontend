@@ -57,25 +57,33 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@atwoz.com", "support@atwoz.com"],
+      details: ["kishanmalimali815@gmail.com"],
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 98765 43210", "+91 98765 43211"],
+      details: ["+91 93240 15719", "+91 96721 32307"],
       color: "from-green-500 to-emerald-500",
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["Mumbai, Maharashtra", "India"],
+      details: [
+        "ATWOZ IT SOLUTIONS PVT LTD,",
+        "Baba Ramdev Hotel Ke Samne",
+        "Sirohi Rajsthan - 307001",
+      ],
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"],
+      details: [
+        "Mon - Fri: 9:00 AM - 6:00 PM",
+        "Sat: 10:00 AM - 4:00 PM",
+        "Sun: Close",
+      ],
       color: "from-orange-500 to-red-500",
     },
   ];
@@ -339,14 +347,12 @@ const ContactPage = () => {
                     />
                     <div>
                       <p className="font-semibold text-gray-900">
-                        Atwoz Digital Solutions
+                        Atwoz IT Solution Pvt Ltd
                       </p>
                       <p className="text-gray-600">
-                        123 Tech Park, Andheri West
+                        Baba Ramdev Hotel Ke Samne
                       </p>
-                      <p className="text-gray-600">
-                        Mumbai, Maharashtra 400058
-                      </p>
+                      <p className="text-gray-600">Sirohi Rajsthan - 307001</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -356,8 +362,8 @@ const ContactPage = () => {
                     />
                     <div>
                       <p className="font-semibold text-gray-900">Phone</p>
-                      <p className="text-gray-600">+91 98765 43210</p>
-                      <p className="text-gray-600">+91 98765 43211</p>
+                      <p className="text-gray-600">+91 93240 15719</p>
+                      <p className="text-gray-600">+91 96721 32307</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -367,8 +373,10 @@ const ContactPage = () => {
                     />
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
-                      <p className="text-gray-600">info@atwoz.com</p>
-                      <p className="text-gray-600">support@atwoz.com</p>
+                      <p className="text-gray-600">
+                        kishanmalimali815@gmail.com
+                      </p>
+                      {/* <p className="text-gray-600">support@atwoz.com</p> */}
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -386,6 +394,7 @@ const ContactPage = () => {
                       <p className="text-gray-600">
                         Saturday: 10:00 AM - 4:00 PM
                       </p>
+                      <p className="text-gray-600">Sunday: Close</p>
                     </div>
                   </div>
                 </div>
@@ -403,11 +412,15 @@ const ContactPage = () => {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <Phone size={20} />
-                    <span>+91 98765 43210</span>
+                    <a href="tel:+919324015719">
+                      <span>+91 9324015719</span>
+                    </a>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MessageSquare size={20} />
-                    <span>WhatsApp: +91 98765 43210</span>
+                    <a href="http://wa.me//919324015719">
+                      <span>WhatsApp: +91 9324015719</span>
+                    </a>
                   </div>
                 </div>
               </div>
