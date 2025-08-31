@@ -49,11 +49,21 @@ const Header = ({ onSidebarToggle }) => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              {/* <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">A</span>
+                </div> */}
+              <div className="w-10 h-10 bg-gradient-to-r from-white-600 to-white-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10">
+                  <img
+                    src="/logo.png"
+                    alt="Atwoz"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
+
               <span
-                className={`text-2xl font-bold ${
+                className={`text-2xl font-bold transition-colors duration-300 ${
                   scrolled ? "text-gray-800" : "text-white"
                 }`}
               >
