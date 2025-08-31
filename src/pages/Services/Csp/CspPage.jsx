@@ -397,11 +397,11 @@ Remarks: _____________________
                   <div className="space-y-3 text-sm text-gray-700">
                     <div className="flex items-center space-x-3">
                       <Phone className="w-4 h-4 text-blue-500" />
-                      <span>+91 9587892989</span>
+                      <span>+91 {import.meta.env.VITE_MOBILE_NO_1}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-4 h-4 text-blue-500" />
-                      <span>csp@atwoz.com</span>
+                      <span>{import.meta.env.VITE_HELP_SPPORT_EMAIL_ID}</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Clock className="w-4 h-4 text-blue-500" />

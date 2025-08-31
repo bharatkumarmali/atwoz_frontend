@@ -57,13 +57,16 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["kishanmalimali815@gmail.com"],
+      details: [import.meta.env.VITE_EMAIL_ID, import.meta.env.VITE_HELP_SPPORT_EMAIL_ID],
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 93240 15719", "+91 96721 32307"],
+      details: [
+        `+91 ${import.meta.env.VITE_MOBILE_NO_1}`,
+        `+91 ${import.meta.env.VITE_MOBILE_NO_2}`,
+      ],
       color: "from-green-500 to-emerald-500",
     },
     {
@@ -89,13 +92,11 @@ const ContactPage = () => {
   ];
 
   const services = [
-    "Web Development",
-    "Mobile App Development",
-    "UI/UX Design",
-    "SEO & Marketing",
-    "Business Analytics",
-    "Cybersecurity",
-    "Other",
+    "Aadhaar Services",
+    "Emitra Services",
+    "CSP Services",
+    "PAN Services",
+    "Utility Services",
   ];
 
   return (
@@ -330,7 +331,7 @@ const ContactPage = () => {
                 <div className="text-center text-gray-600">
                   <Globe size={64} className="mx-auto mb-4" />
                   <p className="text-lg font-semibold">Interactive Map</p>
-                  <p className="text-sm">Mumbai, Maharashtra, India</p>
+                  <p className="text-sm">Sirohi, Rajasthan, India</p>
                 </div>
               </div>
 
@@ -362,8 +363,12 @@ const ContactPage = () => {
                     />
                     <div>
                       <p className="font-semibold text-gray-900">Phone</p>
-                      <p className="text-gray-600">+91 93240 15719</p>
-                      <p className="text-gray-600">+91 96721 32307</p>
+                      <p className="text-gray-600">
+                        +91 {import.meta.env.VITE_MOBILE_NO_1}
+                      </p>
+                      <p className="text-gray-600">
+                        +91 {import.meta.env.VITE_MOBILE_NO_2}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -374,9 +379,9 @@ const ContactPage = () => {
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
                       <p className="text-gray-600">
-                        kishanmalimali815@gmail.com
+                        {import.meta.env.VITE_EMAIL_ID}
                       </p>
-                      {/* <p className="text-gray-600">support@atwoz.com</p> */}
+                      <p className="text-gray-600">{import.meta.env.VITE_HELP_SPPORT_EMAIL_ID}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -413,13 +418,15 @@ const ContactPage = () => {
                   <div className="flex items-center space-x-3">
                     <Phone size={20} />
                     <a href="tel:+919324015719">
-                      <span>+91 9324015719</span>
+                      <span>+91 {import.meta.env.VITE_MOBILE_NO_1}</span>
                     </a>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MessageSquare size={20} />
                     <a href="http://wa.me//919324015719">
-                      <span>WhatsApp: +91 9324015719</span>
+                      <span>
+                        WhatsApp: +91 {import.meta.env.VITE_MOBILE_NO_1}
+                      </span>
                     </a>
                   </div>
                 </div>

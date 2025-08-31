@@ -89,16 +89,16 @@ const Footer = () => {
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Mail size={16} />
                   <a href="mailto:kishanmalimali815@gmail.com">
-                    <span>kishanmalimali815@gmail.com</span>
+                    <span>{import.meta.env.VITE_EMAIL_ID}</span>
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
                   <Phone size={16} />
                   <a href="tel:+919324015719">
-                    <span>+91 9324015719 ,</span>
+                    <span>+91 {import.meta.env.VITE_MOBILE_NO_1} ,</span>
                   </a>{" "}
                   <a href="tel:+919672132307">
-                    <span>+91 9672132307</span>
+                    <span>+91 {import.meta.env.VITE_MOBILE_NO_2}</span>
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-400">
@@ -239,7 +239,9 @@ const Footer = () => {
                 <span>© 2024 Atwoz. All rights reserved.</span>
                 <span>Developed by</span>
                 {/* <Heart size={14} className="text-red-500" /> */}
-                <span className="underline text-blue-500 cursor-pointer">Bharat Mali</span>
+                <span className="underline text-blue-500 cursor-pointer">
+                  Bharat Mali
+                </span>
               </motion.div>
 
               {/* Social Links */}
